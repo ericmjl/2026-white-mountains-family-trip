@@ -1,0 +1,19 @@
+.gitignore
+  s_441681130ed6d9::t_45025bae43804d 1-2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "3e3174c75bcc61e74558c2455fef6e8a9183828a",
+  "prompts": {},
+  "sessions": {
+    "s_441681130ed6d9": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_fd0b85f0affeh1jHsARAX55tRM",
+        "model": "glm-5.3"
+      },
+      "human_author": "Eric Ma <ericmajinglong@gmail.com>"
+    }
+  }
+}
