@@ -655,6 +655,7 @@
     window.addEventListener("scroll", spy, { passive: true });
 
     /* ---- today chip (during the trip) ---- */
+    var todaySection = null;
     try {
       var now = new Date();
       var ymd = now.getFullYear() + "-" + String(now.getMonth() + 1).padStart(2, "0") + "-" + String(now.getDate()).padStart(2, "0");
@@ -666,6 +667,7 @@
           el.appendChild(chip);
           var day = el.closest(".day");
           if (day) {
+            todaySection = day;
             var link = document.querySelector('[data-spy="' + day.id + '"]');
             if (link) {
               var dot = document.createElement("span");
@@ -677,6 +679,15 @@
         }
       });
     } catch (err) { /* non-fatal */ }
+
+    /* ---- auto-scroll to today's section on load (a hash in the URL wins; clicks afterward just work) ---- */
+    if (todaySection) {
+      requestAnimationFrame(function () {
+        if (!location.hash) {
+          todaySection.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+        }
+      });
+    }
 
     /* ---- packing checklist with localStorage ---- */
     var KEY = "wm26-packing";
