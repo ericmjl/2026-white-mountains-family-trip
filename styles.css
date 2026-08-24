@@ -635,16 +635,16 @@ a { color: var(--dusk); text-underline-offset: 0.18em; }
   grid-template-columns: repeat(auto-fit, minmax(min(19rem, 100%), 1fr));
   gap: clamp(2rem, 4vw, 3.5rem);
 }
-.pack-group { border-top: 2px solid var(--ink); padding-top: 0.9rem; }
-.pack-group h3 {
+.pack-group, .shop-group { border-top: 2px solid var(--ink); padding-top: 0.9rem; }
+.pack-group h3, .shop-group h3 {
   font-family: var(--sans);
   font-size: 0.98rem;
   font-weight: 800;
   letter-spacing: 0.01em;
 }
-.pack-group ul { list-style: none; margin: 0.35rem 0 0; padding: 0; }
-.pack-group li { border-bottom: 1px solid var(--line); }
-.pack-group label {
+.pack-group ul, .shop-group ul { list-style: none; margin: 0.35rem 0 0; padding: 0; }
+.pack-group li, .shop-group li { border-bottom: 1px solid var(--line); }
+.pack-group label, .shop-group label {
   display: flex;
   align-items: center;
   gap: 0.85rem;
@@ -652,16 +652,16 @@ a { color: var(--dusk); text-underline-offset: 0.18em; }
   cursor: pointer;
   user-select: none;
 }
-.pack-group input {
+.pack-group input, .shop-group input {
   width: 1.3rem;
   height: 1.3rem;
   flex: none;
   accent-color: var(--dusk);
   cursor: pointer;
 }
-.pack-group .item { transition: color 0.2s var(--ease-out); }
-.pack-group label:hover .item { color: var(--dusk); }
-.pack-group input:checked ~ .item {
+.pack-group .item, .shop-group .item { transition: color 0.2s var(--ease-out); }
+.pack-group label:hover .item, .shop-group label:hover .item { color: var(--dusk); }
+.pack-group input:checked ~ .item, .shop-group input:checked ~ .item {
   color: var(--muted);
   text-decoration: line-through;
   text-decoration-thickness: 1.5px;

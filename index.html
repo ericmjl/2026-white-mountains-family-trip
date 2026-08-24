@@ -277,6 +277,17 @@
                 buy Clark’s <strong>online before the visit</strong> for the advance price:
                 currently <strong>$33 for ages 4–64</strong>.
               </p>
+
+              <div class="shop-group reveal">
+                <h3>Monday-night grocery run — Price Chopper (for Tuesday’s picnic)</h3>
+                <ul>
+                  <li><label><input type="checkbox" id="g1"><span class="item">Eggs, large — 2 dozen (PICS 12&nbsp;ct · $1.89 ea) — the egg salad base</span></label></li>
+                  <li><label><input type="checkbox" id="g2"><span class="item">White bread — 2 loaves (PICS family size 20&nbsp;oz · $1.59 ea) — about twenty sandwiches’ worth</span></label></li>
+                  <li><label><input type="checkbox" id="g3"><span class="item">Miracle Whip — one 15&nbsp;oz jar (Kraft · ~$4.79)</span></label></li>
+                  <li><label><input type="checkbox" id="g4"><span class="item">Suddenly Pasta Salad, classic — 1 kit ($3.79) — the quick pasta; skip its mayo pouch and use the Miracle Whip</span></label></li>
+                </ul>
+                <p class="aside-note" style="margin-top:0.7rem;">Feeds four grown-ups and three explorers — roughly $15.54 all in.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -787,6 +798,24 @@
     }
     load();
     update();
+
+    /* ---- grocery checklist with its own localStorage ---- */
+    var GKEY = "wm26-groceries";
+    var gboxes = Array.prototype.slice.call(document.querySelectorAll('.shop-group input[type="checkbox"]'));
+    function gload() {
+      var saved = {};
+      try { saved = JSON.parse(localStorage.getItem(GKEY) || "{}"); } catch (err) { saved = {}; }
+      gboxes.forEach(function (b) { b.checked = !!saved[b.id]; });
+    }
+    function gsave() {
+      var out = {};
+      gboxes.forEach(function (b) { if (b.checked) out[b.id] = 1; });
+      try { localStorage.setItem(GKEY, JSON.stringify(out)); } catch (err) { /* private mode */ }
+    }
+    gboxes.forEach(function (b) {
+      b.addEventListener("change", gsave);
+    });
+    gload();
   })();
   </script>
 </body>
